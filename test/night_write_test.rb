@@ -14,58 +14,55 @@ class NightWriteTest < Minitest::Test
 
   def test_one_letter
     etb = NightWrite.new
-    etb.english_returns_braille_array("h")
+    result = etb.english_returns_braille_array("h")
 
-    assert_equal ["0.00.."], etb.english_returns_braille_array('h')
+    assert_equal ["0.00.."], result
   end
 
-  def test_one_letter_again
+  def test_one_symbol
     etb = NightWrite.new
-    etb.english_returns_braille_array("w")
-    etb.english_returns_braille_array("e")
+    result = etb.english_returns_braille_array("?")
 
-    assert_equal [".000.0"], etb.english_returns_braille_array('w')
-    assert_equal ["0..0.."], etb.english_returns_braille_array('e')
-    refute_equal ["000.0"], etb.english_returns_braille_array('w')
-
+    assert_equal ["..0.00"], result
+    refute_equal [".....0", "..0.00"], result
   end
 
   def test_one_word
     etb = NightWrite.new
-    etb.english_returns_braille_array("hell")
+    result = etb.english_returns_braille_array("hell")
 
-    assert_equal ["0.00..", "0..0..", "0.0.0.", "0.0.0."], etb.english_returns_braille_array('hell')
+    assert_equal ["0.00..", "0..0..", "0.0.0.", "0.0.0."], result
   end
 
   def test_two_words_with_space
     etb = NightWrite.new
-    etb.english_returns_braille_array("hello world")
+    result = etb.english_returns_braille_array("hello world")
 
-    assert_equal ["0.00..", "0..0..", "0.0.0.", "0.0.0.", "0..00.", "......", ".000.0", "0..00.", "0.000.", "0.0.0.", "00.0.."], etb.english_returns_braille_array('hello world')
-    refute_equal ["0.00..", "0..0..", "0.0.0.", "0.0.0."], etb.english_returns_braille_array('hello world')
+    assert_equal ["0.00..", "0..0..", "0.0.0.", "0.0.0.", "0..00.", "......", ".000.0", "0..00.", "0.000.", "0.0.0.", "00.0.."], result
+    refute_equal ["0.00..", "0..0..", "0.0.0.", "0.0.0."], result
   end
 
   def test_one_upcase_letter
     etb = NightWrite.new
-    etb.english_returns_braille_array("H")
+    result = etb.english_returns_braille_array("H")
 
-    assert_equal [".....0", "0.00.."], etb.english_returns_braille_array('H')
+    assert_equal [".....0", "0.00.."], result
     # refute_equal ["0.00..", "0..0..", "0.0.0.", "0.0.0."], etb.english_returns_braille_array('hello world')
   end
 
   def test_two_upcase_letters
     etb = NightWrite.new
-    etb.english_returns_braille_array("HeL")
+    result = etb.english_returns_braille_array("HeL")
 
-    assert_equal [".....0", "0.00..", "0..0..", ".....0", "0.0.0."], etb.english_returns_braille_array('HeL')
+    assert_equal [".....0", "0.00..", "0..0..", ".....0", "0.0.0."], result
     # refute_equal ["0.00..", "0..0..", "0.0.0.", "0.0.0."], etb.english_returns_braille_array('hello world')
   end
 
   def test_two_upcase_letters_with_one_space
     etb = NightWrite.new
-    etb.english_returns_braille_array("H eL")
+    result = etb.english_returns_braille_array("H eL")
 
-    assert_equal [".....0", "0.00..", "......", "0..0..", ".....0", "0.0.0."], etb.english_returns_braille_array('H eL')
+    assert_equal [".....0", "0.00..", "......", "0..0..", ".....0", "0.0.0."], result
     # refute_equal ["0.00..", "0..0..", "0.0.0.", "0.0.0."], etb.english_returns_braille_array('hello world')
   end
 

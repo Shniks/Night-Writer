@@ -3,9 +3,13 @@ require "./lib/dictionary"
 
 class NightWrite
 
-  attr_reader   :dictionary
-  attr_accessor :braille, :braille_wrap, :result, :first_row, :second_row, :third_row
-
+  attr_reader    :dictionary
+  attr_accessor  :braille,
+                 :braille_wrap,
+                 :result,
+                 :first_row,
+                 :second_row,
+                 :third_row
 
   def initialize
 
@@ -24,7 +28,7 @@ class NightWrite
   def english_returns_braille_array(incoming_text)
     incoming_text_split_to_letters = incoming_text.split('')
     incoming_text_split_to_letters.each do |letter|
-      if letter.upcase == letter && letter != " "
+      if letter.upcase == letter && letter != " " && letter != "?"
         braille << dictionary["cap"]
         braille << dictionary[letter.downcase]
       else

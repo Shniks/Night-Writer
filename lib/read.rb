@@ -1,12 +1,9 @@
 require './lib/night_read'
 require 'pry'
 
-
 handle = File.open(ARGV[0], "r")
 incoming_text = handle.read
 handle.close
-
-
 
 bte = NightRead.new
 bte.convert_braille_text_into_array(incoming_text)

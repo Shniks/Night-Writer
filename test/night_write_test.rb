@@ -47,7 +47,6 @@ class NightWriteTest < Minitest::Test
     result = etb.english_returns_braille_array("H")
 
     assert_equal [".....0", "0.00.."], result
-    # refute_equal ["0.00..", "0..0..", "0.0.0.", "0.0.0."], etb.english_returns_braille_array('hello world')
   end
 
   def test_two_upcase_letters
@@ -55,7 +54,6 @@ class NightWriteTest < Minitest::Test
     result = etb.english_returns_braille_array("HeL")
 
     assert_equal [".....0", "0.00..", "0..0..", ".....0", "0.0.0."], result
-    # refute_equal ["0.00..", "0..0..", "0.0.0.", "0.0.0."], etb.english_returns_braille_array('hello world')
   end
 
   def test_two_upcase_letters_with_one_space
@@ -63,14 +61,14 @@ class NightWriteTest < Minitest::Test
     result = etb.english_returns_braille_array("H eL")
 
     assert_equal [".....0", "0.00..", "......", "0..0..", ".....0", "0.0.0."], result
-    # refute_equal ["0.00..", "0..0..", "0.0.0.", "0.0.0."], etb.english_returns_braille_array('hello world')
   end
 
-  # def test_wrap_every_eighty_strings
-  #   etb = NightWrite.new
-  #   etb.wrap_every_80_strings()
-  # end
-  #
+  def test_wrap_length
+    etb = NightWrite.new
+    result = etb.wrap_every_eighty_strings([".....0", "0.00..", "......", "0..0..", ".....0", "0.0.0."])
+
+    assert_equal 6, result.length
+  end
 
   def test_converts_braille_hash_to_braille_one_letter_only
     etb = NightWrite.new
@@ -106,13 +104,5 @@ class NightWriteTest < Minitest::Test
 
     assert_equal "0.0.\n" "00.0\n" "....\n" "0.0.\n" "00.0\n" "....\n" "0.0.\n" "00.0\n" "....\n" "0.0.\n" "00.0\n" "....\n", etb.converts_braille_hash_to_braille({1 => ["0.00..", "0..0.."], 2 => ["0.00..", "0..0.."], 3 => ["0.00..", "0..0.."], 4 => ["0.00..", "0..0.."]})
   end
-  # def test_output_braille_in_three_rows
-  #   etb = NightWrite.new
-  #
-  #   result = etb.output_braille_in_three_rows(["0.0.0.00", "00.00...", "....0.00"])
-  #
-  #   assert_nil nil, result
-  # end
-
 
 end

@@ -1,17 +1,17 @@
 class Dictionary
 
-   attr_reader :dictionary
+  attr_reader :dictionary
 
-   def initialize
+  def initialize
 
-     @dictionary = dictionary
+    @dictionary = dictionary
 
-   end
+  end
 
 
-   def dictionary
+  def dictionary
 
-     dictionary = {
+    dictionary = {
                   "a" => "0.....",
                   "b" => "0.0...",
                   "c" => "00....",
@@ -46,10 +46,8 @@ class Dictionary
                   "'" => "....0.",
                   "-" => "....00",
                   "cap" => ".....0"
-
                 }
 
-    end
-
+  end
 
 end

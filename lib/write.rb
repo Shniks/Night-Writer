@@ -1,7 +1,6 @@
 require './lib/night_write'
 require 'pry'
 
-
 handle = File.open(ARGV[0], "r")
 incoming_text = handle.read.gsub("\n", " ").chop
 handle.close

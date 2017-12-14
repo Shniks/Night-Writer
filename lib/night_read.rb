@@ -73,7 +73,7 @@ class NightRead
         english_output_array << letter
         num += 1
       else
-        english_output_array << letter + ('\n')
+        english_output_array << letter + ("\n")
         num = 0
       end
     end
